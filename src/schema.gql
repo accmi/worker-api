@@ -1,0 +1,47 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type AuthResponse {
+  token: String!
+}
+
+type Mutation {
+  signin(signInInput: SignInInput!): AuthResponse!
+  signup(signUpInput: SignUpInput!): AuthResponse!
+}
+
+type OkResponse {
+  OK: Boolean!
+}
+
+type Query {
+  logout: OkResponse!
+  whoami: WhoAmIResponse!
+}
+
+input SignInInput {
+  email: String!
+  password: String!
+}
+
+input SignUpInput {
+  email: String!
+  firstName: String!
+  lastName: String!
+  password: String!
+  role: UserRole!
+}
+
+enum UserRole {
+  ENGINERR
+  MANAGER
+  TESTER
+}
+
+type WhoAmIResponse {
+  email: String!
+  firstName: String!
+  lastName: String!
+  role: UserRole!
+}
