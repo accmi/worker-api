@@ -26,6 +26,10 @@ export class User implements UserModel {
     const salt = bcrypt.genSaltSync();
     return bcrypt.hashSync(password, salt);
   }
+
+  static passwordsMatch(password: string, hashedPassword: string): boolean {
+    return bcrypt.compareSync(password, hashedPassword);
+  }
 }
 
 registerEnumType(UserRole, {

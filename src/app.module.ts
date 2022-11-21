@@ -2,11 +2,9 @@ import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { MiddlewareConsumer, Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
 import { join } from 'path';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { PrismaService } from './prisma.service';
 import { UserModule } from './user/user.module';
-import { LoggerMiddleware } from './utils/logger.middleware';
+import { LoggerMiddleware } from './shared/logger.middleware';
 
 @Module({
   imports: [
@@ -17,8 +15,8 @@ import { LoggerMiddleware } from './utils/logger.middleware';
     }),
     UserModule,
   ],
-  controllers: [AppController],
-  providers: [AppService, PrismaService],
+  controllers: [],
+  providers: [PrismaService],
 })
 export class AppModule {
   configure(consumer: MiddlewareConsumer) {
